@@ -17,7 +17,7 @@ git clone https://github.com/zARODz11z/Algorithm_Visualizer_Django.git
 
 Create virtual env
 ```
-py -m venv env
+py -m venv venv
 ```
 
 Activate virtual environment 
