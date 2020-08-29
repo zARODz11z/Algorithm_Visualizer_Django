@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from algo_vis_app import views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('algo_vis_app.urls')),
+    path('api', views.ChartData.as_view()),
 
 ]

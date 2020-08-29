@@ -1,22 +1,72 @@
+<!-- {% load static %} -->
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-	{%if title%}
-		<title>Algorithm: {{title}}</title>
-	{%else%}
-		<title>Pick an algorithm</title>
-	{% endif %}
+	 <meta charset="utf-8"> 
+  <title>chatsjs</title> 
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+  
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+	
 </head>
 <body>
 	<div class="container">
-		{% block content %}{% endblock %}
+		<div class="text-center">
+				<!-- Example single danger button -->
+				<ul class="nav nav-pills nav-justified">
+
+				  <li class="nav-item">
+					  <div class="btn-group">
+						  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    Sorting Algorithms
+						  </button>
+						  <div class="dropdown-menu">
+						    <a class="dropdown-item" href="#">Bubble Sort Array</a>
+						    <a class="dropdown-item" href="#">Merge Sort Array</a>
+						    <a class="dropdown-item" href="#">Quick Sort Array</a>
+						    <div class="dropdown-divider"></div>
+						    <a class="dropdown-item" href="#">Separated link</a>
+						  </div>
+					</div>
+				  </li>
+
+
+				  <li class="nav-item">
+							<div class="btn-group">
+							  <button type="button" class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    Searching Algorithms
+							  </button>
+							  <div class="dropdown-menu">
+							    <a class="dropdown-item" href="#">Linear Search Array</a>
+							    <a class="dropdown-item" href="#">Binary Search Array</a>
+							    <a class="dropdown-item" href="#">Binary Search Tree</a>
+							    <div class="dropdown-divider"></div>
+							    <a class="dropdown-item" href="#">Separated link</a>
+							  </div>
+							</div>
+						</div>
+				  </li> <!--end search dropdown-->
+				</ul>
+
+				<div class="container">
+					<form>
+						<div class="form-group row">
+							<div class="col-xs-2">
+		        				<label for="ex2">Input the data</label>
+		        				<input class="form-control" id="ex2" type="text">
+		      				</div>
+		      			</div>
+					</form>
+				</div>
+
+
+
+				{% block content %}{% endblock %}
 	</div>
 	
 

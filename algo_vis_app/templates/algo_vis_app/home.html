@@ -1,8 +1,196 @@
-{% extends "algo_vis_app/base.html" %}
-{% block content %}
-	{% for data in input_data %}
-		<h1>{{data}}</h1>
-		<br>
-	{% endfor %}
-{% endblock content %}
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en" dir="ltr"> 
 
+<head> 
+<meta charset="utf-8"> 
+<title>Algo Visualizer</title> 
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+</head> 
+
+<body class="container-fluid">
+
+
+ 
+	<!-- <h1>Choose your algorithm to visualize it using <b>chartJS</b></h1> --> 
+	<div class="container">
+		
+				<!-- Example single danger button -->
+				
+					  <div class="btn-group">
+						  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    Sorting Algorithms
+						  </button>
+						  <div class="dropdown-menu">
+						    <a class="dropdown-item" href="#">Bubble Sort Array</a>
+						    <a class="dropdown-item" href="#">Merge Sort Array</a>
+						    <a class="dropdown-item" href="#">Quick Sort Array</a>
+						    <div class="dropdown-divider"></div>
+						    <a class="dropdown-item" href="#">Separated link</a>
+						  </div>
+					</div>
+				  
+					
+
+				  
+							<div class="btn-group">
+							  <button type="button" class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    Searching Algorithms
+							  </button>
+							  <div class="dropdown-menu">
+							    <a class="dropdown-item" href="#">Linear Search Array</a>
+							    <a class="dropdown-item" href="#">Binary Search Array</a>
+							    <a class="dropdown-item" href="#">Binary Search Tree</a>
+							    <div class="dropdown-divider"></div>
+							    <a class="dropdown-item" href="#">Separated link</a>
+							  </div>
+							</div>
+						
+				  
+
+				
+</div>
+
+
+
+
+	
+
+
+<center class="row"> 
+<div class="container-fluid">
+	<div class="col-xl-12"> 
+	<canvas id="myChartBar"></canvas> 
+	</div> 
+</div> 
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
+
+<script> 
+	var endpoint = '/api'; 
+
+	$.ajax({ 
+	method: "GET", 
+	url: endpoint, 
+	success: function(data) { 
+		drawBarGraph(data, 'myChartBar'); 
+		console.log("drawing"); 
+	}, 
+	error: function(error_data) { 
+		console.log(error_data); 
+	} 
+	}) 
+
+
+
+	function drawBarGraph(data, id) { 
+	var labels = data.labels; 
+	var chartLabel = data.chartLabel; 
+	var chartdata = data.chartdata; 
+	var ctx = document.getElementById(id).getContext('2d'); 
+	var myChart = new Chart(ctx, { 
+		type: 'bar', 
+		data: { 
+		labels: labels, 
+		datasets: [{ 
+			label: chartLabel, 
+			data: chartdata, 
+			backgroundColor: [ 
+			'rgba(255, 99, 132, 1)', 
+			'rgba(54, 162, 235, 1)', 
+			'rgba(255, 206, 86, 1)', 
+			'rgba(75, 192, 192, 1)', 
+			'rgba(153, 102, 255, 1)', 
+			'rgba(255, 159, 64, 1)',
+			'rgba(81,217,13,1)' 
+			], 
+			borderColor: [ 
+			'rgba(255, 99, 132, 1)', 
+			'rgba(54, 162, 235, 1)', 
+			'rgba(255, 206, 86, 1)', 
+			'rgba(75, 192, 192, 1)', 
+			'rgba(153, 102, 255, 1)', 
+			'rgba(255, 159, 64, 1)',
+			'rgba(81,217,13,1)' 
+ 
+			], 
+			borderWidth: 1 
+		}] 
+		}, 
+		options: { 
+		scales: { 
+			yAxes: [{ 
+			ticks: { 
+				// beginAtZero: true
+				 fontSize: 25,
+				 fontColor: '#FFF'
+
+
+			},
+			scaleLabel: {
+        		display: true,
+        		labelString: 'Element Size',
+        		fontSize: 25,
+        		fontColor: '#FFF'
+
+      		},
+      		gridLines: {color: '#FFF', zeroLineColor: "#FFF"}
+
+			}], 
+			// end
+			xAxes: [{ 
+			ticks: { 
+				// beginAtZero: true
+				 fontSize: 25,
+				 fontColor: '#FFF'
+
+
+			},
+
+			scaleLabel: {
+        		display: true,
+        		labelString: 'Element Position',
+        		fontSize: 25,
+        		fontColor: '#FFF'
+
+      		} 
+			}] 
+
+		} 
+		} 
+	}); 
+	} 
+</script>
+<br>
+<br>
+	<center>
+		<div class="bio">
+			<div class="card" style="width: 18rem;">
+				  <img class="card-img-top" src="https://www.andrewthedev.com/wp-content/uploads/2020/07/PicOfme-1.png" alt="Card image cap" width="200px">
+				  <div class="card">
+				    <h5 class="card-title">Andrew Rodriguez</h5>
+				    <p class="card-text">I created this visualizer to strengthen my sort & search algorithm skills and as a learning platform for people to learn.</p>
+				    <div class="icons">
+				    	<a href="#" class="fa fa-linkedin"></a>
+				    	<a href="#" class="fa fa-github"></a>
+				    </div>
+
+				  </div>
+			</div>  
+		</div>
+	</center>
+</body> 
+
+</html> 

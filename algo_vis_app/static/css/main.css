@@ -1,0 +1,36 @@
+body{
+	color: white;
+	background-color: black;
+}
+canvas{
+	text-align: center;
+	padding: 20px;
+	padding-right: 75px 
+}
+.container{
+	text-align: center;
+}
+
+.card{
+	  margin: 0 auto; /* Added */
+      float: none; /* Added */
+      margin-bottom: 10px; /* Added */
+      padding-left: 10px
+  }
+.bio{
+	 margin: 25 auto; /* Added */
+      float: none; /* Added */
+      margin-bottom: 10px; /* Added */
+      font-size: 1.8rem;
+}
+.icons{
+	    font-size: 75px;
+
+}
+.card-title{
+	      font-size: 3rem;
+
+}
+.card-img-top{
+	padding-right: 20px;
+}

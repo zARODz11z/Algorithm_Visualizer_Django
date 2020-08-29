@@ -1,21 +1,34 @@
 from django.shortcuts import render
-import matplotlib.pyplot as plt 
-import io
-import urllib, base64
-input_data = [
-	{
-		'arr1': [1,5,3,7,3,23,67],
-		'arr2': [3,5,5,19,192,192]
-	}
-]
+from django.views.generic import View
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+arr1 = [1,5,3,7,3,23,67]
+arr2 = [3,5,5,19,192,192]
 
 def home(request):
-	#plt.plot(range(10))
-	context = {
-		'title': 'Bubble Sort',
-		'input_data':input_data
-	}
-	return render(request, 'algo_vis_app/home.html',context)
+	return render(request, 'algo_vis_app/home.html')
 
-def about(request):
-	return render(request, 'algo_vis_app/about.html')
+class ChartData(APIView): 
+    authentication_classes = [] 
+    permission_classes = [] 
+   
+    def get(self, request, format = None): 
+        labels = [ 
+            '0', 
+            '1',  
+            '2',  
+            '3',  
+            '4',  
+            '5',  
+            '6'
+            ] 
+        chartLabel = "Bubble Sort Algorithm"
+        chartdata = [25, 10, 5, 2, 20, 30, 45] 
+        data ={ 
+                     "labels":labels, 
+                     "chartLabel":chartLabel, 
+                     "chartdata":chartdata, 
+             } 
+        return Response(data)
