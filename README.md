@@ -24,7 +24,10 @@ Activate virtual environment
 ```
 .\venv\Scripts\activate
 ```
-
+or 
+```
+source venv/Scripts/activate
+```
 Install packages with pip
 ```
 pip install -r requirements.txt 
