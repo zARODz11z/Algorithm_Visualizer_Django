@@ -22,7 +22,7 @@ py -m venv venv
 
 Activate virtual environment 
 ```
-.\env\Scripts\activate
+.\venv\Scripts\activate
 ```
 
 Install packages with pip
