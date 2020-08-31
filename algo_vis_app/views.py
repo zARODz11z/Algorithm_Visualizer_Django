@@ -11,8 +11,7 @@ def home(request):
 	return render(request, 'algo_vis_app/home.html')
 
 class ChartData(APIView): 
-    authentication_classes = [] 
-    permission_classes = [] 
+    
    
     def get(self, request, format = None): 
         labels = [ 

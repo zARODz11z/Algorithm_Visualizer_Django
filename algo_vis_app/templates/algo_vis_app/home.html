@@ -6,9 +6,22 @@
 <meta charset="utf-8"> 
 <title>Algo Visualizer</title> 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Optional JavaScript -->
+ 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<!-- <script>
+    $(document).ready(function(){
+        $("#exampleModal").modal('show');
+    });
+</script>
+    -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
@@ -18,74 +31,142 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
+
+
 </head> 
 
 <body class="container-fluid">
+<!-- Modal -->
+<!-- Button trigger modal -->
 
 
- 
-	<!-- <h1>Choose your algorithm to visualize it using <b>chartJS</b></h1> --> 
-	<div class="container">
-		
-				<!-- Example single danger button -->
-				
-					  <div class="btn-group">
-						  <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						    Sorting Algorithms
-						  </button>
-						  <div class="dropdown-menu">
-						    <a class="dropdown-item" href="#">Bubble Sort Array</a>
-						    <a class="dropdown-item" href="#">Merge Sort Array</a>
-						    <a class="dropdown-item" href="#">Quick Sort Array</a>
-						    <div class="dropdown-divider"></div>
-						    <a class="dropdown-item" href="#">Separated link</a>
-						  </div>
-					</div>
-				  
-					
 
-				  
-							<div class="btn-group">
-							  <button type="button" class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Searching Algorithms
-							  </button>
-							  <div class="dropdown-menu">
-							    <a class="dropdown-item" href="#">Linear Search Array</a>
-							    <a class="dropdown-item" href="#">Binary Search Array</a>
-							    <a class="dropdown-item" href="#">Binary Search Tree</a>
-							    <div class="dropdown-divider"></div>
-							    <a class="dropdown-item" href="#">Separated link</a>
-							  </div>
-							</div>
+
+
+
+
+<!-- ------------------------------------------------------------------ -->
+	<div class="buttons">
+		<div class="btn-group">
+
+			  <div class="dropdown btn-group">
+				    <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Sorting Algorithms
+				    <!-- <i class="fa fa-caret-down"></i></button> -->
+				    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+				      <li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="printMessage();">Bubble Sort</a></li>
+				      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Merge Sort</a></li>
+				      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Quick Sort</a></li>
+
+				    </ul>
+			  </div> 
+
+
+				  <button type="button" id= "CreateButton" onclick="CreateArray();">
+	  				Create Array
+				  </button>
+				  <script type="text/javascript">
+				  	
+				  </script>
+
+				  <!-- ---------------------------------- -->
+				  <button type="button" id = "HelpButton" class="btn btn-warning" data-toggle="modal" data-target="#HelpModal">
+  					Help
+			  	  </button>
+
+				  <button type="button" id="SortButton" onclick="printMessage();">
+  					Sort Array
+			  	  </button>
+
+			  	  
+
+
+			  <div class="dropdown btn-group">
+				    <button class="btn btn-danger btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Searching Algorithms
+				    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+				      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Binary Search</a></li>
+				      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Linear Search</a></li>
+
+				    </ul>
+			  </div> 
 						
 				  
+		</div>
+		<!-- Modal -->
+			<div class="modal fade" id="HelpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Welcome to my Algorithm Visualizer    <img src="https://www.andrewthedev.com/wp-content/uploads/2020/08/websitePictureOfMe9.png" width="80" height="80"></h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        As you can see you have buttons to interact with the application.
+			        <ol>
+			        	<li>First choose which algorithm you would like to visualize.</li>
+			        	<li>Create an array</li>
+			        	<li>Sort the array</li>
+			        	<li>Use arrows to step through the algorithm</li>
+			        	<li>Or press the play button to let it run by it's self</li>
+			        </ol> 
+			         
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		<br>
+		<br>
+		<span class="previous_next">
+			<button type="button" class="btn">
+  					<a href="#" class="previous round">&#11207;</a>
+			  	  </button>
+			
 
-				
-</div>
 
+			<button type="button" class="btn">
+  					<a href="#" class="pause">&#8214;</a>
+			  	  </button>
+			<!-- <div class="input-group flex-nowrap ">
+			  
+			  <input type="text" class="form-control" placeholder="Input custom array integers" aria-label="Username" aria-describedby="addon-wrapping">
+			</div> -->
 
+			<button type="button" class="btn">
+  								<a href="#" class="next round">&#11208;</a>
 
+			  	  </button>
 
-	
+		</span>
+	</div>
+
+<!-- ----------------------------------------------------------- -->
 
 
 <center class="row"> 
 <div class="container-fluid">
 	<div class="col-xl-12"> 
-	<canvas id="myChartBar"></canvas> 
+	<canvas id="myChartBar" width="80" height="35"></canvas> 
 	</div> 
 </div> 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
 
-<script> 
-	var endpoint = '/api'; 
+<script>
+	
 
+	Chart.defaults.global.legend.display = false;
+	var myChart;
+	var endpoint = '/api'; 
 	$.ajax({ 
 	method: "GET", 
 	url: endpoint, 
 	success: function(data) { 
-		drawBarGraph(data, 'myChartBar'); 
+		myChart = drawBarGraph(data, 'myChartBar'); 
 		console.log("drawing"); 
 	}, 
 	error: function(error_data) { 
@@ -96,101 +177,144 @@
 
 
 	function drawBarGraph(data, id) { 
-	var labels = data.labels; 
-	var chartLabel = data.chartLabel; 
-	var chartdata = data.chartdata; 
-	var ctx = document.getElementById(id).getContext('2d'); 
-	var myChart = new Chart(ctx, { 
-		type: 'bar', 
-		data: { 
-		labels: labels, 
-		datasets: [{ 
-			label: chartLabel, 
-			data: chartdata, 
-			backgroundColor: [ 
-			'rgba(255, 99, 132, 1)', 
-			'rgba(54, 162, 235, 1)', 
-			'rgba(255, 206, 86, 1)', 
-			'rgba(75, 192, 192, 1)', 
-			'rgba(153, 102, 255, 1)', 
-			'rgba(255, 159, 64, 1)',
-			'rgba(81,217,13,1)' 
-			], 
-			borderColor: [ 
-			'rgba(255, 99, 132, 1)', 
-			'rgba(54, 162, 235, 1)', 
-			'rgba(255, 206, 86, 1)', 
-			'rgba(75, 192, 192, 1)', 
-			'rgba(153, 102, 255, 1)', 
-			'rgba(255, 159, 64, 1)',
-			'rgba(81,217,13,1)' 
- 
-			], 
-			borderWidth: 1 
-		}] 
-		}, 
-		options: { 
-		scales: { 
-			yAxes: [{ 
-			ticks: { 
-				// beginAtZero: true
-				 fontSize: 25,
-				 fontColor: '#FFF'
-
-
-			},
-			scaleLabel: {
-        		display: true,
-        		labelString: 'Element Size',
-        		fontSize: 25,
-        		fontColor: '#FFF'
-
-      		},
-      		gridLines: {color: '#FFF', zeroLineColor: "#FFF"}
-
-			}], 
-			// end
-			xAxes: [{ 
-			ticks: { 
-				// beginAtZero: true
-				 fontSize: 25,
-				 fontColor: '#FFF'
-
-
-			},
-
-			scaleLabel: {
-        		display: true,
-        		labelString: 'Element Position',
-        		fontSize: 25,
-        		fontColor: '#FFF'
-
-      		} 
+		var labels = data.labels; 
+		var chartLabel = data.chartLabel; 
+		var chartdata = data.chartdata; 
+		var ctx = document.getElementById(id).getContext('2d'); 
+		var myChart = new Chart(ctx, { 
+			type: 'bar', 
+			data: { 
+			labels: labels, 
+			datasets: [{ 
+				label: chartLabel, 
+				data: chartdata, 
+				backgroundColor: 'rgba(5, 204, 2.8,1)', 
+				borderColor: 'rgba(5, 204, 2.8,1)', 
+				borderWidth: 1 
 			}] 
+			}, 
+			options: {
+			 title: {
+	            display: true,
+	            text: 'Bubble Sort',
+	            fontSize: 20,
+	            fontColor: '#FFF'
+	        },
+	        animation:{
+	        	duration: 0
+	        },
+			scales: { 
+				yAxes: [{ 
+				ticks: { 
+					 beginAtZero: true,
+					 fontSize: 25,
+					 fontColor: '#FFF'
 
-		} 
-		} 
-	}); 
-	} 
+
+				},
+				scaleLabel: {
+	        		display: true,
+	        		labelString: 'Element Size',
+	        		fontSize: 25,
+	        		fontColor: '#FFF'
+
+	      		},
+	      		gridLines: {color: '#FFF', zeroLineColor: "#FFF"}
+
+				}], 
+				// end
+				xAxes: [{ 
+				ticks: { 
+					// beginAtZero: true
+					 fontSize: 25,
+					 fontColor: '#FFF'
+
+
+				},
+
+				scaleLabel: {
+	        		display: true,
+	        		labelString: 'Element Position',
+	        		fontSize: 25,
+	        		fontColor: '#FFF'
+
+	      		} 
+				}] 
+
+			} 
+			} 
+		});
+		return myChart; 
+	}
+
+function CreateArray(){
+		alert("create array button clicked");
+		myChart.destroy()
+
+		var data = new Object();
+		var numOfElements = Math.floor(Math.random()*25) +1;
+		var chartLabel = "Merge Sort Algorithm";
+		var xLabels = []
+		var chartData = []
+		var i;
+		for (i =0; i < numOfElements; i++){
+			xLabels.push(i);
+			chartData.push(Math.floor(Math.random()*50) +5);
+
+
+		}
+		data["labels"] = xLabels;
+		data["chartLabel"] = chartLabel;
+		data["chartdata"] = chartData;
+
+		myChart = drawBarGraph(data,'myChartBar');
+
+
+		//call the drawBarGraph(data,id)
+
+		// var num = Math.floor(Math.random()*50) +1;
+		// my_bar_chart.data.labels.push(label);
+    	// my_bar_chart.data.datasets.forEach((dataset) => {
+     //    dataset.data.push(data);
+    	// });
+    	// chart.update();
+
+		
+		console.log("reached end");
+	}
+
+function printMessage(){
+		alert("hello world");
+	}
+
+	
+
+
 </script>
-<br>
-<br>
-	<center>
-		<div class="bio">
-			<div class="card" style="width: 18rem;">
-				  <img class="card-img-top" src="https://www.andrewthedev.com/wp-content/uploads/2020/07/PicOfme-1.png" alt="Card image cap" width="200px">
-				  <div class="card">
-				    <h5 class="card-title">Andrew Rodriguez</h5>
-				    <p class="card-text">I created this visualizer to strengthen my sort & search algorithm skills and as a learning platform for people to learn.</p>
-				    <div class="icons">
-				    	<a href="#" class="fa fa-linkedin"></a>
-				    	<a href="#" class="fa fa-github"></a>
-				    </div>
 
-				  </div>
-			</div>  
+	<div class="footer">
+		<h1>Andrew Rodriguez</h1>
+		<p>I created this visualizer as a learning tool for anyone researching Sort & Search Algorithms. During development not only did I improve my algorithmic skills but I learned how to build and deploy a Django web application for the entire web.</p>
+
+		<br>
+		<h2>Contact</h2>
+		<h5>Email: <a href="mailto:andrewrod003@gmail.com">andrewrod003@gmail.com</a></h5>
+		<h5>Phone: (209) 620-0798</h5>
+		<h5>Resume: <a href="https://drive.google.com/file/d/1yzlrCinGqC4oLVIXyR6I_SOoLeBr506P/view?usp=sharing">PDF Link</a></h5>
+		<div class="icons">
+			<a href="https://www.linkedin.com/in/andrew-m-rodriguez" class="fa fa-linkedin"></a>
+			<a href="https://github.com/zARODz11z" class="fa fa-github">
+			</a>
+			<a href="https://www.andrewthedev.com/" class="fa fa-globe">
+			</a>
 		</div>
-	</center>
+	</div>
+
+
+
+
+
+  </body>
 </body> 
 
 </html> 
