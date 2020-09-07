@@ -3,9 +3,31 @@ from django.views.generic import View
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import HttpResponse
+from django.http import JsonResponse
+import sys
+import pathlib
+import json
+from algo_vis_app.SortingAlgorithms.BubbleSort import bubble_sort
+# @APIView(('GET',))
+# @renderer_classes((TemplateHTMLRenderer, JSONRenderer))
 
-arr1 = [1,5,3,7,3,23,67]
-arr2 = [3,5,5,19,192,192]
+
+
+def Bubble_Sort(request):
+	array_data = request.POST['nums_array[]']
+	data = json.loads(array_data)
+	print("test")
+	print("data: ",data)
+	algo_info = bubble_sort(data)
+	print("reached bubble_sort view function")
+	print("algo_info: ",algo_info)
+	# return HttpResponse(request,'algo_vis_app/home.html',{"algo_info":algo_info})
+	# return HttpResponse(algo_info)
+	
+	# return HttpResponse({"algo_info":algo_info})
+	return JsonResponse({"algo_info":algo_info})
+
 
 def home(request):
 	return render(request, 'algo_vis_app/home.html')
@@ -23,7 +45,7 @@ class ChartData(APIView):
             '5',  
             '6'
             ] 
-        chartLabel = "Bubble Sort Algorithm"
+        chartLabel = "Choose an Algorithm!"
         chartdata = [25, 10, 5, 2, 20, 30, 45] 
         data ={ 
                      "labels":labels, 
@@ -31,3 +53,6 @@ class ChartData(APIView):
                      "chartdata":chartdata, 
              } 
         return Response(data)
+
+
+

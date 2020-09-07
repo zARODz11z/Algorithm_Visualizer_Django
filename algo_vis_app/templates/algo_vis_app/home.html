@@ -52,12 +52,17 @@
 			  <div class="dropdown btn-group">
 				    <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Sorting Algorithms
 				    <!-- <i class="fa fa-caret-down"></i></button> -->
-				    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-				      <li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="printMessage();">Bubble Sort</a></li>
-				      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Merge Sort</a></li>
-				      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Quick Sort</a></li>
+				    
+					    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="change_to_bubble_sort();">Bubble Sort</a></li>
+					      
 
-				    </ul>
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Merge Sort</a></li>
+
+					      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Quick Sort</a></li>
+
+					    </ul>
+					
 			  </div> 
 
 
@@ -73,7 +78,7 @@
   					Help
 			  	  </button>
 
-				  <button type="button" id="SortButton" onclick="printMessage();">
+				  <button type="button" id="SortButton" onclick="sort_array();">
   					Sort Array
 			  	  </button>
 
@@ -157,8 +162,12 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
 
 <script>
-	
-
+	var Chart_data = new Object();
+	// var algo_info = new Object();
+	var algo_info;
+	console.log(algo_info);
+	// console.log(data_from_django);
+	var current_algorithm_choosen;
 	Chart.defaults.global.legend.display = false;
 	var myChart;
 	var endpoint = '/api'; 
@@ -247,50 +256,69 @@
 		return myChart; 
 	}
 
+
+
 function CreateArray(){
-		alert("create array button clicked");
+		// alert("create array button clicked");
 		myChart.destroy()
 
-		var data = new Object();
-		var numOfElements = Math.floor(Math.random()*25) +1;
+		
+		var numOfElements = Math.floor(Math.random()*40) +1;
 		var chartLabel = "Merge Sort Algorithm";
 		var xLabels = []
 		var chartData = []
 		var i;
 		for (i =0; i < numOfElements; i++){
 			xLabels.push(i);
-			chartData.push(Math.floor(Math.random()*50) +5);
+			chartData.push(Math.floor(Math.random()*100) +5);
 
 
 		}
-		data["labels"] = xLabels;
-		data["chartLabel"] = chartLabel;
-		data["chartdata"] = chartData;
+		window.Chart_data["labels"] = xLabels;
+		window.Chart_data["chartLabel"] = chartLabel;
+		window.Chart_data["chartdata"] = chartData;
 
-		myChart = drawBarGraph(data,'myChartBar');
-
-
-		//call the drawBarGraph(data,id)
-
-		// var num = Math.floor(Math.random()*50) +1;
-		// my_bar_chart.data.labels.push(label);
-    	// my_bar_chart.data.datasets.forEach((dataset) => {
-     //    dataset.data.push(data);
-    	// });
-    	// chart.update();
+		myChart = drawBarGraph(window.Chart_data,'myChartBar');
+		
 
 		
 		console.log("reached end");
 	}
 
 function printMessage(){
-		alert("hello world");
+		window.test = "changed the variable value"
+		console.log(window.test)
 	}
+function change_to_bubble_sort(){
+	current_algorithm_choosen = "BubbleSort"
+	console.log(current_algorithm_choosen)
+
+}
+
+function sort_array(){
+	console.log(window.Chart_data["chartdata"]);
+	$.ajax({
+		type: "POST",
+		url: '{{ 'bubble-sort/' }}',
+		data: { csrfmiddlewaretoken: '{{ csrf_token }}',
+			'nums_array[]': JSON.stringify(Chart_data['chartdata']) },
+
+		success: function(response){
+			console.log(response)
+			algo_info = "{{algo_info}}";
+			console.log(algo_info["comparisons"]);
+		}
+	});
+}
 
 	
 
 
 </script>
+
+
+
+
 
 	<div class="footer">
 		<h1>Andrew Rodriguez</h1>
